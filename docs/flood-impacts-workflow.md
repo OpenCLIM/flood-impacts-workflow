@@ -121,7 +121,8 @@ perimeters for either each building (TOID) or property (UPRN).
 
 Table 2 - Example output CSV from the flood impacts model
 
-| toid | depth | damage | vd_product | flooded_perimeter
+| toid | depth | damage | vd_product | flooded_perimeter |
+| --- | --- | --- | --- | --- |
 | osgb1000000313425904 | 0.019 | 4 | 0.013 | 14 |
 | osgb1000040429529 | 0.268 | 12910 | 0.019 | 33 |
 | osgb1000002038581673 | 0.072 | 1816 | 0.027 | 10 |
@@ -148,4 +149,5 @@ Table 3 - Example return period damages and probabilities
 | 100 | >30	| 1583538 | 0.99005	| 0.032784 |
 
 Equation 1 - Expected Annual Damage calculation
+
 `expected annual damage = ∑(damage × probability) = £423,866`
