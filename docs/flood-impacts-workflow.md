@@ -4,13 +4,14 @@ assesses damages to buildings caused by flooding. Expected annual damages can be
 multiple event return periods. Future scenarios can be simulated using event uplifts and adaptation measures reviewed. 
 The workflow is available on DAFNI here. The source code is available on GitHub for the CityCAT and Flood Impacts models.
 
-## CityCAT Hydrodynamic simulation
+## CityCAT hydrodynamic simulation
 The CityCAT DAFNI model wraps the Windows binary executable CityCAT.exe in a Python script which pre-processes input 
 data and post-processes output data. The Windows emulator Wine is used to run CityCAT on Linux. The source code for 
-CityCAT itself is not publicly available, however the code used to create the Docker image can be accessed here. 
+CityCAT itself is not publicly available, however the code used to create the Docker image can be accessed 
+[here](https://github.com/OpenCLIM/citycat-dafni), along with further documentation. 
 
 ### Input Data
-The following are default datasets and can be replaced
+The following are default datasets and can be replaced if required.
 
 #### OS Terrain 5
 The DEM is extracted from OS Terrain 5 which is a corrected digital surface model of the UK with 5m resolution. The 
@@ -25,10 +26,11 @@ most detailed and up-to-date view of Britain’s landscape. This data is licence
 Optionally, UDM can be integrated into the workflow. If this is case, then the buildings from the UDM urban fabric layer 
 are combined with the buildings from OS MasterMap to create a combined future projection. 
 
-#### SHETRAN Results
-Optionally, a discharge hydrography from SHETRAN can be used as an input boundary condition. If this is provided, then 
-a file containing a polygon that overlaps with domain cell boundaries is required. Discharge is routed into the domain 
-at these overlapping cell boundaries.
+#### Discharge boundary condition
+Optionally, discharge can be used as an input boundary condition. If this is provided, then a file containing a polygon 
+that overlaps with domain cell boundaries is required. Discharge is routed into the domain at these overlapping cell 
+boundaries. The discharge is distributed uniformly over the specified duration and gets multiplied by the number of 
+cells intersected.
 
 #### FUTURE-DRAINAGE Rainfall Event Uplifts
 Rainfall depths for a range of return periods, durations and time periods are provided by FUTURE-DRAINAGE. The estimates 
@@ -38,11 +40,11 @@ the period 1981-2000 in the ReturnLevel.<year> field. Percentage uplifts are ava
 
 Table 1 - Example rows from a FUTURE-DRAINAGE CSV file for the 100-year return period
 
-| easting | northing | ReturnLevel.100 | Uplift_50 | Uplift_95
+| easting | northing | ReturnLevel.100 | Uplift_50 | Uplift_95 |
 | --- | --- | --- | --- | --- |
-| 92500 | 12500 | 39.1 | 15 | 40
-| 167500 | 12500 | 38.9 | 15 | 40
-| 172500 | 12500 | 39.1 | 15 | 40
+| 92500 | 12500 | 39.1 | 15 | 40 |
+| 167500 | 12500 | 38.9 | 15 | 40 |
+| 172500 | 12500 | 39.1 | 15 | 40 |
 
 ### Configuration
 
@@ -85,10 +87,11 @@ Figure 1. Maximum water depth for the 100-year flood event in Glasgow, 2070.
 ## Flood impacts (Calculating damages)
 The flood impacts DAFNI model uses the outputs from CityCAT to calculate flood damage to buildings. Alternative 
 hydrodynamic models could be used if the output data matches the format. Damages from multiple events can be used 
-to calculate expected annual damage. All code for this model is open source and can be accessed here. 
+to calculate expected annual damage. All code for this model is open source and can be accessed 
+[here](https://github.com/OpenCLIM/flood-impacts-dafni), along with further documentation. 
 
 ### Input Data
-The following are default datasets and can be replaced.
+The following are default datasets and can be replaced if required.
 
 #### CityCAT Results
 The maximum depth and velocity-depth product CityCAT output files are used to calculate the maximum depth and 
