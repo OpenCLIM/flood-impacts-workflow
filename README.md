@@ -12,4 +12,6 @@ functions to upload the workflow and parameter sets. If any errors occur when up
 workflow is deleted.
 
 ## Documentation
-[flood-impacts-workflow.md](/docs/flood-impacts-workflow.md)
+CityCAT model - [citycat-dafni.md](https://github.com/OpenCLIM/citycat-dafni/blob/master/docs/citycat-dafni.md)
+
+Flood impacts model - [flood-impacts-dafni.md](https://github.com/OpenCLIM/flood-impacts-dafni/blob/master/docs/flood-impacts.md)
