@@ -1,5 +1,7 @@
 # Flood Impacts Workflow
 
+[![upload](https://github.com/OpenCLIM/flood-impacts-workflow/actions/workflows/upload.yml/badge.svg)](https://github.com/OpenCLIM/flood-impacts-workflow/actions/workflows/upload.yml)
+
 ## Description
 This repository contains a JSON file describing the flood-impacts workflow (`workflow.json`) and a jinja2 template for 
 creating parameter sets (`parameter_set.json`). `login.py` contains a function for generating the necessary 
