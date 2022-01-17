@@ -1,0 +1,18 @@
+name: upload
+on: [push, pull_request]
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: pip install requests Jinja2
+      - name: Upload to DAFNI
+        env:
+          DAFNI_SERVICE_ACCOUNT_USERNAME: ${{ secrets.DAFNI_SERVICE_ACCOUNT_USERNAME }}
+          DAFNI_SERVICE_ACCOUNT_PASSWORD: ${{ secrets.DAFNI_SERVICE_ACCOUNT_PASSWORD }}
+        run: python upload.py

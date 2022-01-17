@@ -1,0 +1,56 @@
+{
+    "metadata": {
+        "description": "Flood Impacts",
+        "display_name": "Flood Impacts",
+        "name": "flood-impacts",
+        "publisher": "Newcastle University",
+        "summary": "Flood Impacts"
+    },
+    "api_version": "v1beta1",
+    "kind": "W",
+    "spec": {
+        "steps": [
+            {
+                "kind": "model",
+                "name": "citycat",
+                "inputs": [],
+                "model_version": "83d3b225-6920-4f6f-994d-fbd17b119984"
+            },
+            {
+                "kind": "model",
+                "name": "flood-impacts",
+                "inputs": [
+                    {
+                        "step": "citycat"
+                    }
+                ],
+                "model_version": "d62d0d2e-ec45-4ae9-a3cb-84dd0d986bc7"
+            },
+            {
+                "kind": "publisher",
+                "name": "publish",
+                "files": [
+                    {
+                        "step": "flood-impacts",
+                        "paths": [
+                            "outputs/buildings.csv"
+                        ]
+                    },
+                    {
+                        "step": "citycat",
+                        "paths": [
+                            "outputs/run/max_depth.tif",
+                            "outputs/run/max_depth.png"
+                        ]
+                    }
+                ],
+                "metadata": {
+                    "from_file": {
+                        "path": "outputs/run/metadata.json",
+                        "step": "citycat"
+                    }
+                }
+            }
+        ]
+    }
+}
